@@ -608,3 +608,404 @@ Npm init -y
 Npm install express
 Npm install path
 Npm install node-datetime
+
+[9:07 pm, 03/03/2024] Jashan: #include<iostream>
+#include<stack>
+using namespace std;
+
+class bracketBalancing
+{
+public:
+
+    void bracketbalancing()
+    {
+        stack<char> Stak;
+
+        char exp[100];
+        cout<<"Enter expression="<<endl;
+        cin>>exp;
+
+        for(int i=0;exp[i]!='\0';i++)
+        {
+            char element = exp[i];
+
+            if(element=='{' || element=='[' || element=='(')
+            {
+                Stak.push(element);
+                cout<<"Element pushed = "<<element<<endl;
+            }
+            else
+                if(element=='}' || element==']' || element==')')
+                {
+                    if(Stak.empty())
+                    {
+                        cout<<"Expression Not balanced"<<endl;
+                        return;
+        }
+
+                    char popped=Stak.pop();
+                    cout<<"Element popped to match = "<<popped<<endl;
+
+                    if(element=='{' && popped=='}' || element=='[' && popped==']' || element=='(' && popped==')')
+                        continue;
+                    else
+                    {
+                        cout<<"Expression Not balanced"<<endl;
+                        return;
+                    }
+
+                }
+        }
+        if(Stak.empty())
+            cout<<"Expression balanced"<<endl;
+        else
+            cout<<"Expression Not balanced"<<endl;
+    }
+};
+int main()
+{
+    bracketBalancing obj;
+
+    obj.bracketbalancing();
+}
+
+
+CLASS OBJECT
+
+#include<iostream>
+using namespace std;
+
+class car
+{
+    public:
+};
+int main()
+{
+    car obj; //obj -> fortuner car
+}
+
+
+#include<iostream>
+using namespace std;
+
+class car
+{
+    public:
+    
+    string name;
+    int speed;
+};
+int main()
+{
+    car obj; //obj -> fortuner car
+    
+    obj.name = "fortuner";
+    obj.speed = 100;
+    
+    cout<<obj.name<<" "<<obj.speed<<endl;
+    
+    car *obj2 = new car();
+    
+    obj2->name = "Etios";
+    obj2->speed = 80;
+    
+    cout<<obj2->name<<" "<<obj2->speed<<endl;
+    
+}
+
+
+ENCAPSULATION
+
+#include<iostream>
+using namespace std;
+
+class Solution
+{
+    int x;
+    
+    public:
+    
+    void setData(int var)
+    {
+        x = var;
+    }
+    
+    void getData()
+    {
+        cout<<x<<endl;
+    }
+};
+int main()
+{
+    Solution obj;
+    
+    //cout<<obj.x; // private
+    
+    obj.setData(3);
+    
+    obj.getData(); //3
+    
+}
+
+
+PARAMETRIZED CONTRUCTOR
+
+#include<iostream>
+using namespace std;
+
+class Solution
+{
+    int var;
+    
+    public:
+    
+    Solution(int var)
+    {
+        this->var = var;
+    }
+    
+    int getData()
+    {
+        return var;
+    }
+};
+int main()
+{
+    Solution obj(3);
+    
+    obj.getData();
+    
+}
+
+
+COPY CONSTRUCTOR
+
+#include<iostream>
+using namespace std;
+
+class Solution
+{
+    int var;
+    
+    public:
+    
+    Solution(int var)
+    {
+        this->var = var;
+    }
+    
+    Solution(const Solution &rvar)
+    {
+        this->var = rvar.var;
+    }
+    
+    int getData()
+    {
+        return var;
+    }
+};
+int main()
+{
+    Solution obj(3);
+    
+    cout<<obj.getData()<<endl;
+
+    Solution obj2 = obj;
+    
+    cout<<obj2.getData()<<endl;
+    
+}
+
+
+DECONSTRUCTOR
+
+#include<iostream>
+using namespace std;
+
+class Solution
+{
+    int var;
+    
+    public:
+    
+    Solution(int var)
+    {
+        this->var = var;
+    }
+    
+    int getData()
+    {
+        return var;
+    }
+    
+    ~Solution()
+    {
+        cout<<"Memory destoyed"<<endl;
+    }
+};
+int main()
+{
+    Solution obj(3);
+    
+    cout<<obj.getData()<<endl;
+}
+
+
+SINGLE INHERITENCE
+
+#include<iostream>
+using namespace std;
+
+class A
+{
+    public:
+    
+    A()
+    {
+        cout<<"class A"<<endl;
+    }
+    
+    ~A()
+    {
+        cout<<"Memory destoyed for A"<<endl;
+    }
+};
+class B : public A
+{
+    
+};
+int main()
+{
+    A obj;
+}
+
+
+MULTILEVEL INHERITNCE
+
+#include<iostream>
+using namespace std;
+
+class A
+{
+    public:
+    
+    A()
+    {
+        cout<<"class A"<<endl;
+    }
+    
+    ~A(){}
+};
+class B : public A
+{
+    public:
+    
+    B()
+    {
+        cout<<"B class"<<endl;
+    }
+};
+class C : public B
+{
+    public:
+    
+    C()
+    {
+        cout<<"C Class"<<endl;
+    }
+};
+int main()
+{
+    C obj;
+}
+
+
+MULTIPLE INHERITENCE
+
+#include<iostream>
+using namespace std;
+
+class A
+{
+    public:
+    
+    A()
+    {
+        cout<<"class A"<<endl;
+    }
+    
+    ~A()
+    {
+        cout<<"Memory destoyed for A"<<endl;
+    }
+};
+class B
+{
+    public:
+    
+    B()
+    {
+        cout<<"B class"<<endl;
+    }
+};
+class C : public A, B
+{
+    public:
+    
+    C()
+    {
+        cout<<"Class C"<<endl;
+    }
+};
+int main()
+{
+    C obj;
+}
+
+
+#include<iostream>
+using namespace std;
+
+class BASE
+{
+    public:
+    
+    virtual void display()
+    {
+        cout<<"Display base class"<<endl;
+    }
+    
+    void show()
+    {
+        cout<<"show Base class"<<endl;
+    }
+};
+class DERIVED : public BASE 
+{
+    public:
+    
+    void display()
+    {
+        cout<<"Display derived class"<<endl;
+    }
+    
+    void show()
+    {
+        cout<<"Show derived class"<<endl;;
+    }
+};
+int main()
+{
+    BASE *b;
+    BASE base;
+    
+    DERIVED derived;
+    
+    b = &derived;
+    
+    b->display();
+    
+    b->show();
+    
+    base.display();
+}
